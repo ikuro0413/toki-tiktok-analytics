@@ -120,6 +120,25 @@
   .act-b{font-size:13.5px; color:var(--ink-2); line-height:1.7;}
   footer{font-size:12px; color:var(--ink-3); border-top:1px solid var(--rule); padding-top:18px; line-height:1.8;}
   a{color:var(--indigo);}
+
+  /* 講評 */
+  .revbox{display:flex; flex-direction:column; gap:0; border:1px solid var(--rule); background:var(--card);}
+  .revbox + .revbox{margin-top:-1px;}
+  .bh{font-family:"Yu Mincho","游明朝",serif; font-size:17px; font-weight:600; margin:0;
+      padding:13px 18px; border-bottom:1px solid var(--rule); display:flex; gap:12px;
+      align-items:baseline; flex-wrap:wrap; background:var(--bar);}
+  .bmeta{font-family:"Hiragino Kaku Gothic ProN","Meiryo",sans-serif; font-size:11.5px;
+         color:var(--ink-3); letter-spacing:.04em; font-weight:400;}
+  .rev{padding:14px 18px; border-bottom:1px solid var(--rule-2); display:flex; flex-direction:column; gap:7px;}
+  .rev:last-child{border-bottom:none;}
+  .rev.good{border-left:3px solid var(--moss);}
+  .rev.bad{border-left:3px solid var(--vermilion);}
+  .rh{display:flex; gap:11px; align-items:baseline; flex-wrap:wrap;}
+  .pill{font-size:10.5px; letter-spacing:.05em; padding:1px 7px; border:1px solid var(--ink-3);
+        color:var(--ink-3); border-radius:2px; white-space:nowrap; font-variant-numeric:tabular-nums;}
+  .rt{font-weight:600; font-size:15px;}
+  .rm{font-size:11.5px; color:var(--ink-3);}
+  .rc{font-size:13.5px; color:var(--ink-2); line-height:1.8; max-width:74ch;}
   @media (max-width:640px){ .wrap{padding:36px 16px 64px; gap:44px;} .kpi .val{font-size:27px;} }
 </style>
 </head>
@@ -217,6 +236,155 @@
       </tr></thead>
       <tbody></tbody>
     </table>
+  </div>
+</section>
+
+<section>
+  <h2>投稿ごとの講評</h2>
+  <p class="lede">30本すべてに1本ずつコメントを付けた。数値は 07-31 19:40 時点。<span class="pill">◯位</span>は新スコアの順位。</p>
+
+  <div class="revbox">
+    <h3 class="bh">take <span class="bmeta">解禁済 / フォロワー508 / 6本 3,414再生 / 箱スコア32.5</span></h3>
+    <div class="rev">
+      <div class="rh"><span class="pill">6位</span><span class="rt">シャッフル睡眠法</span><span class="rm num">938再生・いいね率1.71%・保存率0.320%</span></div>
+      <div class="rc">新運用の初日に出した手順型。takeで唯一保存が3件付いた投稿で、いいね率も箱内2位。ベンチマークにしていた「手順ものは保存される」が自分の箱でも再現した唯一の証拠になっている。takeは解禁済み箱なので、この型を主軸に据えるのが最も筋が通る。</div>
+    </div>
+    <div class="rev">
+      <div class="rh"><span class="pill">12位</span><span class="rt">90分前の風呂</span><span class="rm num">504再生・いいね率1.79%・保存率0.198%</span></div>
+      <div class="rc">「90分・40℃・15分」と覚えるべき数字を3つに絞ったのが効いていて、いいね率は箱内2位。再生が伸びないのは配信量の問題で、届いた人の反応率は悪くない。内容を疑うより、同型を続けて配信が戻るかを見る局面。</div>
+    </div>
+    <div class="rev">
+      <div class="rh"><span class="pill">15位</span><span class="rt">世界の昼寝文化</span><span class="rm num">760再生・いいね率1.58%・保存率0%</span></div>
+      <div class="rc">いいね率は高いのに保存がゼロ。「へえ」で終わって手元に残す理由がない典型例。雑学は反応するが行動につながらない、という分業がこの1本にきれいに出ている。</div>
+    </div>
+    <div class="rev">
+      <div class="rh"><span class="pill">22位</span><span class="rt">ホットミルク説</span><span class="rm num">545再生・いいね率0.92%・保存率0%</span></div>
+      <div class="rc">「本当に効果があるのか？」と問いは立てたが、答えが弱い。否定するなら振り切って否定したほうがいい。中途半端な検証は、肯定派にも否定派にも反応する理由を与えない。</div>
+    </div>
+    <div class="rev bad">
+      <div class="rh"><span class="pill">29位</span><span class="rt">江戸の睡眠</span><span class="rm num">459再生・いいね率0%・保存0・コメント0</span></div>
+      <div class="rc"><strong>30本で唯一、いいねがゼロ。</strong>歴史ものは「自分に関係ある」に着地しないと何も起きない。キャプションの「生活しやすくなったのと、生きやすくなったのは違う」は問いとして悪くないが、スライド側がそこまで運べていない。この題材は捨てていい。</div>
+    </div>
+    <div class="rev">
+      <div class="rh"><span class="pill">20位</span><span class="rt">297億円（古文書横）</span><span class="rm num">208再生・いいね率2.40%・投稿1.2時間</span></div>
+      <div class="rc">投稿から1時間強なので再生は評価できない。ただし<strong>いいね率2.40%は30本で最高</strong>で、古文書の横書きが反応率では強いことを示している。ただしtakeは解禁済み箱なので、ここに時事を置くのは配置としては惜しい。</div>
+    </div>
+  </div>
+
+  <div class="revbox">
+    <h3 class="bh">Manuel <span class="bmeta">育成中 / 6本 25,995再生 / 箱スコア57.0（最高）</span></h3>
+    <div class="rev good">
+      <div class="rh"><span class="pill">4位</span><span class="rt">8億円（古文書・縦書き）</span><span class="rm num">9,179再生・いいね率1.66%・保存率0.120%・シェア3</span></div>
+      <div class="rc">縦書き12枚。3.9時間で9,179は箱内で最速の立ち上がり。縦書き3本の中では最もいいね率が高く、古文書テイストとの相性の良さが出ている。ただし保存率0.120%は低く、<strong>バズるが手元には残らない型</strong>だとはっきり分かる。</div>
+    </div>
+    <div class="rev good">
+      <div class="rh"><span class="pill">3位</span><span class="rt">14日の実験</span><span class="rm num">6,100再生・会話率0.098%・シェア4・コメント2</span></div>
+      <div class="rc"><strong>シェアが4件付いた唯一級の投稿</strong>で、配信継続力は15点満点。「6時間睡眠を14日続けたらどうなるか」という実験の結果は人に見せたくなる。数字型の中でも、単発の数字を提示する型より<strong>実験と結果の構造</strong>のほうが拡散する。</div>
+    </div>
+    <div class="rev">
+      <div class="rh"><span class="pill">5位</span><span class="rt">17時間の壁</span><span class="rm num">5,162再生・いいね率1.22%・保存率0.077%</span></div>
+      <div class="rc">「起きて17時間で酒気帯び相当」という一撃の比較。14日の実験と同じ数字型だが保存率は0.077%と低く、驚きで終わっている。数字型の中では 実験型 ＞ 比較型 という序列が見える。</div>
+    </div>
+    <div class="rev good">
+      <div class="rh"><span class="pill">2位</span><span class="rt">10-3-2-1-0</span><span class="rm num">2,939再生・いいね率1.97%・保存率0.408%（30本中2位）</span></div>
+      <div class="rc">再生は中位だが保存率が突出。手順が5つの数字に圧縮されていて、覚えるために保存される作りになっている。<strong>これが育成中のManuelにあるのは配置ミス</strong>で、解禁済み箱に置くべき最有力の型。</div>
+    </div>
+    <div class="rev">
+      <div class="rh"><span class="pill">14位</span><span class="rt">6時間半の国</span><span class="rm num">1,885再生・いいね率0.42%・保存率0.053%</span></div>
+      <div class="rc">数字型なのに反応が薄い。「日本の平均睡眠時間は世界最下位」は既に知られすぎていて驚きがない。<strong>既知の統計は数字型でも効かない</strong>ことの実例。</div>
+    </div>
+    <div class="rev">
+      <div class="rh"><span class="pill">24位</span><span class="rt">答えようのない質問（古文書・横書き）</span><span class="rm num">730再生・いいね率0.55%・保存率0.274%</span></div>
+      <div class="rc">同じ本文の縦書き版（neru102 8,031）と<strong>11倍の差</strong>がついた。同一内容でここまで割れたので、テイストか箱のどちらかが強く効いている。保存率0.274%は高く、届いた人には刺さっているので、内容の問題ではない。</div>
+    </div>
+  </div>
+
+  <div class="revbox">
+    <h3 class="bh">integrator <span class="bmeta">育成中 / 5本 15,768再生 / 箱スコア37.3</span></h3>
+    <div class="rev good">
+      <div class="rh"><span class="pill">1位</span><span class="rt">8億円（黒基調・縦書き）</span><span class="rm num">13,700再生・いいね率2.10%・保存率0.219%・コメント8</span></div>
+      <div class="rc"><strong>全30本の最高点82.3。</strong>27枚の縦書きで、6.8時間で13,700。コメント8件は30本で最多で、議論が起きている。黒基調 × 縦書き × 時事、という組み合わせが現時点の最強解になっている。</div>
+    </div>
+    <div class="rev">
+      <div class="rh"><span class="pill">19位</span><span class="rt">寝相の話</span><span class="rm num">939再生・いいね率0.64%・保存率0.106%</span></div>
+      <div class="rc">白・淡色テイスト。キャプションが「〜必要はありません」「〜が大切です」と説明的で、スライドのトーンも平坦。医療的な正確さを優先した結果、フックが消えている。</div>
+    </div>
+    <div class="rev">
+      <div class="rh"><span class="pill">23位</span><span class="rt">夢日記の噂</span><span class="rm num">339再生・いいね率1.47%・保存率0%</span></div>
+      <div class="rc">いいね率は悪くないが再生が伸びない。「夢日記は危ない」という都市伝説の検証は入口が狭く、その噂を既に知っている人にしか刺さらない。</div>
+    </div>
+    <div class="rev">
+      <div class="rh"><span class="pill">26位</span><span class="rt">休日の予定論争</span><span class="rm num">342再生・いいね率1.46%</span></div>
+      <div class="rc">白ノート型のVS構成。ずばずば型の鉄則である「賛否併記はNG」に反していて、どちらの立場にも刺さらない。予定ぎっしり派か真っ白派か、と問うだけでは主張がない。</div>
+    </div>
+    <div class="rev">
+      <div class="rh"><span class="pill">21位</span><span class="rt">週休3日論争</span><span class="rm num">448再生・いいね率0.22%・会話率0.446%（30本中最高）</span></div>
+      <div class="rc">いいねは1件なのにコメントが2件。<strong>賛否が割れる題材はいいねされずコメントされる</strong>という構造がはっきり出ている。会話喚起だけを狙うなら論争型は機能するが、いいね率0.22%ではフォローには繋がらない。</div>
+    </div>
+  </div>
+
+  <div class="revbox">
+    <h3 class="bh">あんな <span class="bmeta">育成中 / 5本 9,182再生 / 箱スコア36.3</span></h3>
+    <div class="rev">
+      <div class="rh"><span class="pill">8位</span><span class="rt">8億円（黒基調・横書き）</span><span class="rm num">4,748再生・いいね率0.72%・保存率0.084%</span></div>
+      <div class="rc">3バージョンの中で最も反応率が低い。同じ黒基調でも、横書きだと縦書き版（2.10%）の3分の1。<strong>同一本文どうしの比較なので、縦書きの効果を示す最も直接的な証拠</strong>になっている。</div>
+    </div>
+    <div class="rev good">
+      <div class="rh"><span class="pill">9位</span><span class="rt">寝る前NG5選</span><span class="rm num">1,966再生・いいね率0.92%・保存率0.305%（30本中3位）</span></div>
+      <div class="rc">番付・NG集は保存される。10-3-2-1-0と同じ「後で確認したい」型で、育成箱にあるのは配置として惜しい。5選という区切りが、保存する理由をそのまま提供している。</div>
+    </div>
+    <div class="rev">
+      <div class="rh"><span class="pill">10位</span><span class="rt">ナポレオン</span><span class="rm num">1,043再生・いいね率0.67%・会話率0.096%・シェア1</span></div>
+      <div class="rc">偉人ネタは話のネタとして共有される。ただしいいね率は低く、<strong>感心はされるが好かれてはいない</strong>。人に教えたくなる知識と、自分が支持したくなる主張は別物だと分かる。</div>
+    </div>
+    <div class="rev bad">
+      <div class="rh"><span class="pill">28位</span><span class="rt">深夜LINE論争</span><span class="rm num">1,032再生・いいね率0.00%・保存1</span></div>
+      <div class="rc">再生1,032に対して<strong>いいねゼロ</strong>。UI再現（LINE吹き出し）は目を引くが、共感でも反発でもない中間に落ちた。「午前1:47の起きてる？」は状況が具体的すぎて、当てはまらない人が大半だったと見ている。UI再現系は強フォーマットだが、題材の当事者率が低いと空振りする。</div>
+    </div>
+    <div class="rev">
+      <div class="rh"><span class="pill">27位</span><span class="rt">夏と冬の眠り</span><span class="rm num">393再生・いいね率1.02%・保存率0%</span></div>
+      <div class="rc">熱帯夜 vs 冬布団のVS構成。休日の予定論争と同じで、賛否を併記した時点で主張が消えている。決着、と書いてあるのに決着がついていない。</div>
+    </div>
+  </div>
+
+  <div class="revbox">
+    <h3 class="bh">睡眠学 <span class="bmeta">育成中 / 5本 4,282再生 / 箱スコア33.1</span></h3>
+    <div class="rev good">
+      <div class="rh"><span class="pill">11位</span><span class="rt">いびきの話</span><span class="rm num">961再生・いいね率1.77%・保存率0.208%</span></div>
+      <div class="rc">箱内で最も反応が良い。「いびきは"よく寝てる音"ではない」という否定型のフックが効いている。<strong>思い込みを壊す構造</strong>は雑学の中でも強い型で、他の題材にも転用できる。</div>
+    </div>
+    <div class="rev">
+      <div class="rh"><span class="pill">17位</span><span class="rt">寝入りばなのビクッ</span><span class="rm num">1,411再生・いいね率0.71%・保存率0.071%</span></div>
+      <div class="rc">再生は箱内トップだが反応率は低い。誰もが経験する現象なので広く配信されるが、そのぶん既に知っている人も多く「へえ」で止まる。共通体験は入口としては強く、出口としては弱い。</div>
+    </div>
+    <div class="rev">
+      <div class="rh"><span class="pill">16位</span><span class="rt">夢で走れない</span><span class="rm num">1,045再生・いいね率1.05%・保存率0.191%</span></div>
+      <div class="rc">この型の原型になった投稿。反応率・保存率とも安定していて、<strong>型として再現性を持っている</strong>ことを示している。後続3本を作った判断は数字の裏付けがある。</div>
+    </div>
+    <div class="rev">
+      <div class="rh"><span class="pill">18位</span><span class="rt">なぜ夢を見るのか</span><span class="rm num">400再生・いいね率1.75%・保存率0%</span></div>
+      <div class="rc">再生は最下位級だが、いいね率は箱内2位。刺さる人には刺さるが配信量が出ない。問いが「なぜ夢を見るのか」と大きすぎて、スワイプを止めるフックとしては抽象的すぎた。</div>
+    </div>
+    <div class="rev good">
+      <div class="rh"><span class="pill">25位</span><span class="rt">3時間睡眠</span><span class="rm num">465再生・いいね率0.22%・保存率0.430%（30本中最高）</span></div>
+      <div class="rc">いいねはほぼ付かないのに<strong>保存率は30本で最高</strong>。「ショートスリーパーは実在するのか」は、自分に当てはまるか後で確かめたい人が保存する。<strong>いいねと保存はまったく別の行動</strong>だということが、この1本だけで分かる。なお文字量465字は30本で最多で、いいね率の低さの一因になっている可能性がある。</div>
+    </div>
+  </div>
+
+  <div class="revbox">
+    <h3 class="bh">neru102 <span class="bmeta">解禁済 / フォロワー280 / 3本 8,736再生 / 箱スコア31.7</span></h3>
+    <div class="rev">
+      <div class="rh"><span class="pill">7位</span><span class="rt">答えようのない質問（縦書き）</span><span class="rm num">8,031再生・いいね率0.27%・コメント3・シェア1</span></div>
+      <div class="rc">3.8時間で8,031。ただし<strong>いいね率0.27%は30本で下から3番目</strong>で、伸びているのに好かれていないという珍しい形になっている。29枚は読み切るのに負荷が高く、最後まで到達した人が少ない可能性がある。重い時事題材と長尺の組み合わせは、リーチは出るがフォローには繋がりにくい。</div>
+    </div>
+    <div class="rev good">
+      <div class="rh"><span class="pill">13位</span><span class="rt">冷凍食品論争</span><span class="rm num">404再生・いいね率2.23%（30本中2位）・保存率0.248%</span></div>
+      <div class="rc">再生は404と小さいが反応率は最高クラス。<strong>ずばずば型は刺さる人には確実に刺さる</strong>ことの証明になっている。開設直後で配信量が絞られているだけなので、再生の小ささを理由にこの型を止めるのは誤り。</div>
+    </div>
+    <div class="rev bad">
+      <div class="rh"><span class="pill">30位</span><span class="rt">アドバイス求めてない</span><span class="rm num">301再生・いいね率0.33%・保存率0%</span></div>
+      <div class="rc">白ミニマルテイスト。同じずばずば型なのに冷凍食品論争（2.23%）と<strong>7倍の差</strong>。内容の質ではなくテイストで負けている可能性が高く、白を止める根拠がここにも出ている。投稿時刻が00:18というのも不利に働いた可能性がある。</div>
+    </div>
   </div>
 </section>
 
