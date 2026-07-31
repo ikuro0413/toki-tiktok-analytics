@@ -103,7 +103,7 @@
 
 <section>
   <h2>実験の共通ルール</h2>
-  <p class="lede">この5つを守らないと、何が効いたのか今回と同じように分からなくなる。</p>
+  <p class="lede">この5つを守らないと、何が効いたのか今回と同じように分からなくなる。とくに RULE 2 は凍結リスクに直結する。</p>
   <div class="rules">
     <div class="rule">
       <div class="rn">RULE 1</div>
@@ -112,8 +112,8 @@
     </div>
     <div class="rule">
       <div class="rn">RULE 2</div>
-      <div class="rt">本文は完全に同一にする</div>
-      <div class="rb">内容の面白さは最大のノイズ。同じ本文を使い回せば内容を定数にできる。テイストや縦横の検証では必ず本文を固定する。</div>
+      <div class="rt">本文は使い回さない</div>
+      <div class="rb"><strong>同一本文を複数アカウントに投げると重複判定にかかり、最悪アカウントが凍結する。</strong>内容を定数にしたくて本文を固定したくなるが、それはやらない。代わりに<strong>同じ型（数字型・手順型など）の別本文</strong>で揃え、内容の差はノイズとして本数で均す。</div>
     </div>
     <div class="rule">
       <div class="rn">RULE 3</div>
@@ -122,13 +122,13 @@
     </div>
     <div class="rule">
       <div class="rn">RULE 4</div>
-      <div class="rt">2倍未満の差は「判定保留」にする</div>
-      <div class="rb">同じ型でも箱と日で再生が数倍ぶれる。縦横は6.5倍差だったので結論を出せたが、1.5倍程度なら偶然の範囲として扱い、もう1回まわす。</div>
+      <div class="rt">1条件につき最低3本、中央値で判断する</div>
+      <div class="rb">本文が違う以上、内容の当たり外れがそのままノイズになる。1本ずつの比較では何も言えない。1条件あたり3〜4本出して<strong>24時間後再生の中央値</strong>で比べる。平均だと1本の大当たりに引っ張られる。差が2倍未満なら判定保留。</div>
     </div>
     <div class="rule">
       <div class="rn">RULE 5</div>
-      <div class="rt">箱の地力差はクロスオーバーで打ち消す</div>
-      <div class="rb">A案をManuel・B案をintegratorで出したら、次は入れ替えて同じ比較をやる。2回とも同じ側が勝てば箱ではなく変数の効果と言える。</div>
+      <div class="rt">箱を固定して、条件を交互に出す</div>
+      <div class="rb">箱の地力差が最大の交絡になる。AとBを別の箱に割り振るのではなく、<strong>同じ箱の中で交互に出す</strong>。縦・横・縦・横と続ければ、箱も時期もほぼ揃ったまま条件だけを比べられる。</div>
     </div>
   </div>
 </section>
@@ -199,24 +199,25 @@
         </div>
         <div class="row">
           <div class="lab">固定するもの</div>
-          <div class="chips"><span class="chip fix">本文</span><span class="chip fix">古文書テイスト</span><span class="chip fix">投稿時刻</span></div>
+          <div class="chips"><span class="chip fix">箱</span><span class="chip fix">型（睡眠ノウハウ）</span><span class="chip fix">古文書テイスト</span><span class="chip fix">投稿時刻帯</span></div>
         </div>
       </div>
       <div class="row">
         <div class="lab">素材</div>
-        <div class="val"><strong>「10-3-2-1-0」</strong>を使う。保存率0.408%で30本中2位、いいね率1.97%も上位で、横書き版の実績（Manuel 2,942再生）が既にあるため比較の基準が取れている。本文を1枚1メッセージに割って28枚前後の縦書き版を作る。</div>
+        <div class="val">本文は毎回<strong>すべて新規に書き下ろす</strong>。揃えるのは型だけで、既に勝ち筋が確認できている<strong>睡眠ノウハウの手順型・番付型</strong>を使う（10-3-2-1-0が保存率0.408%で30本中2位、寝る前NG5選が0.305%で3位）。題材はストック候補のボディスキャン／睡眠制限法／朝の光の浴び方／寝室の温度設計あたりから8本分を取る。</div>
       </div>
       <div class="row">
-        <div class="lab">組み方（クロスオーバー）</div>
+        <div class="lab">組み方（同一箱で交互）</div>
         <div class="tw"><table>
-          <thead><tr><th>ラウンド</th><th>素材</th><th>縦書き版</th><th>横書き版</th></tr></thead>
+          <thead><tr><th>箱</th><th>1本目</th><th>2本目</th><th>3本目</th><th>4本目</th></tr></thead>
           <tbody>
-            <tr><td>1日目</td><td>10-3-2-1-0</td><td>integrator</td><td>あんな</td></tr>
-            <tr><td>3日目</td><td>寝る前NG5選</td><td>あんな</td><td>integrator</td></tr>
+            <tr><td>あんな</td><td>縦書き</td><td>横書き</td><td>縦書き</td><td>横書き</td></tr>
+            <tr><td>睡眠学</td><td>横書き</td><td>縦書き</td><td>横書き</td><td>縦書き</td></tr>
           </tbody>
         </table></div>
+        <div class="val" style="margin-top:8px">2箱で開始する条件を逆にしておくと、投稿順による有利不利も相殺できる。合計8本で<strong>縦書き4本 対 横書き4本</strong>になる。</div>
       </div>
-      <div class="verdict"><b>判定：</b>2ラウンドとも縦書き側が2倍以上勝てば、<b>縦書きを全ジャンルの標準にする</b>。時事だけで効いて睡眠では効かないなら、縦書きは題材を選ぶ形式だと分かるので、時事・論争系にだけ使う。なお同一素材を2箱に同時投下するのは重複判定のリスクがあるため、テイストを変えて別物にしておく。</div>
+      <div class="verdict"><b>判定：</b>縦書き4本の中央値が横書き4本の中央値の2倍以上なら、<b>縦書きを全ジャンルの標準にする</b>。時事だけで効いて睡眠では効かないなら、縦書きは題材を選ぶ形式だと分かるので、時事・論争系にだけ使う。</div>
     </div>
   </div>
 </section>
@@ -242,14 +243,21 @@
         </div>
         <div class="row">
           <div class="lab">固定するもの</div>
-          <div class="chips"><span class="chip fix">本文1〜8枚目</span><span class="chip fix">テイスト</span><span class="chip fix">箱</span><span class="chip fix">時刻</span></div>
+          <div class="chips"><span class="chip fix">箱</span><span class="chip fix">型（睡眠ノウハウ）</span><span class="chip fix">テイスト</span><span class="chip fix">枚数</span><span class="chip fix">時刻帯</span></div>
         </div>
       </div>
       <div class="row">
         <div class="lab">手順</div>
-        <div class="val">育成中の4箱に出す睡眠ノウハウ4本のうち、2本を診断CTAのまま、2本をフォロー誘導に差し替える。本文と枚数は揃え、最終枚だけを入れ替える。同じ箱の中で交互に出すと箱の差が消えるので、<strong>1箱につき診断CTA1本・フォロー誘導1本</strong>を2日続けて出すのが最も綺麗になる。</div>
+        <div class="val">本文は毎回新規に書き下ろし、<strong>最終枚のCTAだけを入れ替える</strong>。育成中の各箱で、診断CTAとフォロー誘導を交互に出す。1箱あたり4本（各条件2本）、2箱で計8本まわせば各条件4本が揃う。実験2・4が終わった箱から順に着手すれば、同じ制作枠で消化できる。</div>
+        <div class="tw" style="margin-top:10px"><table>
+          <thead><tr><th>箱</th><th>1本目</th><th>2本目</th><th>3本目</th><th>4本目</th></tr></thead>
+          <tbody>
+            <tr><td>あんな</td><td>診断CTA</td><td>フォロー誘導</td><td>診断CTA</td><td>フォロー誘導</td></tr>
+            <tr><td>睡眠学</td><td>フォロー誘導</td><td>診断CTA</td><td>フォロー誘導</td><td>診断CTA</td></tr>
+          </tbody>
+        </table></div>
       </div>
-      <div class="verdict"><b>判定：</b>実験1と同時に走らせると、bioとCTAのどちらが効いたか分からなくなる。<b>実験1を先に3日回し、その結果が出てから着手する</b>。順番を守ることがこの実験の肝になる。</div>
+      <div class="verdict"><b>判定：</b>各条件4本の「増えたフォロワー ÷ 再生数」で比較する。<b>実験1と同時に走らせると、bioとCTAのどちらが効いたか分からなくなる</b>ので、実験1を先に3日回して結果が出てから着手する。順番を守ることがこの実験の肝になる。</div>
     </div>
   </div>
 </section>
@@ -275,7 +283,7 @@
         </div>
         <div class="row">
           <div class="lab">固定するもの</div>
-          <div class="chips"><span class="chip fix">本文</span><span class="chip fix">縦書き</span><span class="chip fix">枚数</span><span class="chip fix">投稿時刻（30分以内）</span></div>
+          <div class="chips"><span class="chip fix">箱</span><span class="chip fix">型</span><span class="chip fix">縦書き</span><span class="chip fix">枚数</span><span class="chip fix">投稿時刻帯</span></div>
         </div>
       </div>
       <div class="row">
@@ -289,7 +297,18 @@
         </table></div>
         <div class="val" style="margin-top:8px">とくに<strong>コメント19対2という差</strong>が大きい。黒基調のほうが議論を起こす力が強い可能性があるが、題材が同じである以上これはテイストか箱のどちらかで説明するしかない。</div>
       </div>
-      <div class="verdict"><b>判定：</b>クロスオーバーで2ラウンド。1回目は黒＝Manuel／古文書＝integrator と<b>今回と逆に割り当てる</b>。それでも黒基調が勝てばテイストの効果、逆なら箱の効果。コメント数も併せて見る。</div>
+      <div class="row">
+        <div class="lab">組み方（同一箱で交互・本文は毎回新規）</div>
+        <div class="tw"><table>
+          <thead><tr><th>箱</th><th>1本目</th><th>2本目</th><th>3本目</th><th>4本目</th></tr></thead>
+          <tbody>
+            <tr><td>Manuel</td><td>黒基調</td><td>古文書</td><td>黒基調</td><td>古文書</td></tr>
+            <tr><td>integrator</td><td>古文書</td><td>黒基調</td><td>古文書</td><td>黒基調</td></tr>
+          </tbody>
+        </table></div>
+        <div class="val" style="margin-top:8px">どちらも縦書きに固定し、型は数字型か巨大数字の対比型で揃える。実験2は あんな・睡眠学 で回すので箱が重ならず、<strong>同じ期間に並行して走らせられる</strong>。</div>
+      </div>
+      <div class="verdict"><b>判定：</b>各条件4本の中央値で比較する。再生だけでなく<b>コメント数も併せて見る</b>。8億円では黒基調19件・古文書2件と差が大きく、テイストで議論の起きやすさが変わる可能性がある。</div>
     </div>
   </div>
 </section>
@@ -329,21 +348,21 @@
 
 <section>
   <h2>7日間の回し方</h2>
-  <p class="lede">実験1は投稿と独立して走るので初日から。実験3は実験1の結果が出るまで着手しない。</p>
+  <p class="lede">実験1は投稿と独立して走るので初日から。実験2と4は使う箱が重ならないので並行して回せる。実験3は実験1の結果が出るまで着手しない。</p>
   <div class="cal">
     <table>
       <caption>推奨スケジュール（8/1 &ndash; 8/7）</caption>
       <thead><tr><th>日</th><th>やること</th><th>実験</th><th>備考</th></tr></thead>
       <tbody>
         <tr><td>8/1</td><td>Manuel・睡眠学のbioを書き換える</td><td><span class="tag t1">実験1 開始</span></td><td>制作コストなし。朝のうちに</td></tr>
-        <tr><td>8/1</td><td>10-3-2-1-0 の縦書き版を制作 → integrator へ</td><td><span class="tag t2">実験2 R1</span></td><td>横書き版はあんなへ同日</td></tr>
-        <tr><td>8/2</td><td>8億円と同型の新作を、黒＝Manuel／古文書＝integrator</td><td><span class="tag t3">実験4 R1</span></td><td>前回と逆の割り当て</td></tr>
-        <tr><td>8/3</td><td>寝る前NG5選 の縦書き版 → あんな／横書き → integrator</td><td><span class="tag t2">実験2 R2</span></td><td>箱を入れ替える</td></tr>
+        <tr><td>8/1</td><td>あんな=縦／睡眠学=横、Manuel=黒／integrator=古文書</td><td><span class="tag t2">実験2</span> <span class="tag t3">実験4</span></td><td>本文はすべて新規。1日4本</td></tr>
+        <tr><td>8/2</td><td>あんな=横／睡眠学=縦、Manuel=古文書／integrator=黒</td><td><span class="tag t2">実験2</span> <span class="tag t3">実験4</span></td><td>条件を反転</td></tr>
+        <tr><td>8/3</td><td>8/1と同じ割り当てで3本目</td><td><span class="tag t2">実験2</span> <span class="tag t3">実験4</span></td><td></td></tr>
         <tr><td>8/4</td><td>実験1の判定。効いていれば残り2箱にも展開</td><td><span class="tag t1">実験1 判定</span></td><td>再生あたりフォロワー増で比較</td></tr>
-        <tr><td>8/4</td><td>実験4 R2（箱を入れ替えてもう1本）</td><td><span class="tag t3">実験4 R2</span></td><td></td></tr>
-        <tr><td>8/5</td><td>実験2の判定 → 縦書きの適用範囲を決める</td><td><span class="tag t2">実験2 判定</span></td><td>全ジャンル標準にするか、時事限定か</td></tr>
+        <tr><td>8/4</td><td>8/2と同じ割り当てで4本目</td><td><span class="tag t2">実験2</span> <span class="tag t3">実験4</span></td><td>各条件4本が揃う</td></tr>
         <tr><td>8/5</td><td>CTA差し替え版の制作開始</td><td><span class="tag t4">実験3 開始</span></td><td>実験1の結果を見てから</td></tr>
-        <tr><td>8/6&ndash;7</td><td>実験3を回しつつ、勝った形式で通常投稿</td><td><span class="tag t4">実験3</span></td><td>実験5は来週以降</td></tr>
+        <tr><td>8/6</td><td>実験2・4の判定（8/4投稿分の24時間後）</td><td><span class="tag t2">実験2 判定</span> <span class="tag t3">実験4 判定</span></td><td>各条件4本の中央値で比較</td></tr>
+        <tr><td>8/7</td><td>実験3を回しつつ、勝った形式で通常投稿</td><td><span class="tag t4">実験3</span></td><td>実験5は来週以降</td></tr>
       </tbody>
     </table>
   </div>
@@ -365,11 +384,16 @@
     </div>
     <div class="rule">
       <div class="rn">STOP 3</div>
+      <div class="rt">同一本文を複数アカウントに投げない</div>
+      <div class="rb">重複判定にかかると凍結のリスクがある。8億円は既に4箱へ同一本文を出しているので、<strong>これ以上は増やさない</strong>。検証のために本文を揃えたくなる場面が必ず来るが、そこは型を揃えて本数で均す。</div>
+    </div>
+    <div class="rule">
+      <div class="rn">STOP 4</div>
       <div class="rt">同じ変数を2つ同時に動かさない</div>
       <div class="rb">「縦書きにしてテイストも変えて時刻も変えた」をやると、また今回と同じ状態に戻る。迷ったら変えないほうを選ぶ。</div>
     </div>
     <div class="rule">
-      <div class="rn">STOP 4</div>
+      <div class="rn">STOP 5</div>
       <div class="rt">初速で型の良し悪しを決めない</div>
       <div class="rb">neru102の「答えようのない質問」は19時に480再生で不発に見えたが、翌朝には8,168になっていた。24時間は待つ。</div>
     </div>
