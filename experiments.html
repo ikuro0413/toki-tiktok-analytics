@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>TOKI TikTok 検証パターン</title>
+<style>
+  :root{
+    --paper:#e9e6df; --card:#f3f1ec; --ink:#17181c; --ink-2:#4a4b52; --ink-3:#7b7a78;
+    --rule:#cdc8bd; --rule-2:#ded9d0;
+    --indigo:#24486b; --gold:#9a7530; --vermilion:#9c3b28; --moss:#4a6b45; --bar:#24486b1a;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--paper:#0e1014; --card:#171a20; --ink:#e6e3db; --ink-2:#a9a69e; --ink-3:#77746e;
+      --rule:#2b2f38; --rule-2:#22262d; --indigo:#7ba8cf; --gold:#d8b268; --vermilion:#d9604f;
+      --moss:#8bb383; --bar:#7ba8cf1a;}
+  }
+  :root[data-theme="dark"]{--paper:#0e1014; --card:#171a20; --ink:#e6e3db; --ink-2:#a9a69e;
+    --ink-3:#77746e; --rule:#2b2f38; --rule-2:#22262d; --indigo:#7ba8cf; --gold:#d8b268;
+    --vermilion:#d9604f; --moss:#8bb383; --bar:#7ba8cf1a;}
+  :root[data-theme="light"]{--paper:#e9e6df; --card:#f3f1ec; --ink:#17181c; --ink-2:#4a4b52;
+    --ink-3:#7b7a78; --rule:#cdc8bd; --rule-2:#ded9d0; --indigo:#24486b; --gold:#9a7530;
+    --vermilion:#9c3b28; --moss:#4a6b45; --bar:#24486b1a;}
+  *{box-sizing:border-box;}
+  html{background:var(--paper);}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Meiryo",system-ui,sans-serif;
+    font-size:15px; line-height:1.75; -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px; margin:0 auto; padding:56px 24px 96px; display:flex; flex-direction:column; gap:52px;}
+  .num{font-variant-numeric:tabular-nums;}
+  header{display:flex; flex-direction:column; gap:16px; border-bottom:2px solid var(--ink); padding-bottom:24px;}
+  .eyebrow{font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-3); display:flex; gap:14px; flex-wrap:wrap;}
+  h1{font-family:"Yu Mincho","YuMincho","游明朝","Hiragino Mincho ProN",serif;
+     font-size:clamp(28px,5vw,42px); line-height:1.3; margin:0; font-weight:600; text-wrap:balance;}
+  .sub{color:var(--ink-2); max-width:66ch; margin:0;}
+  section{display:flex; flex-direction:column; gap:20px;}
+  h2{font-family:"Yu Mincho","YuMincho","游明朝","Hiragino Mincho ProN",serif; font-size:22px; margin:0;
+     font-weight:600; display:flex; align-items:baseline; gap:12px;}
+  h2::before{content:""; width:22px; height:2px; background:var(--gold); flex:none; transform:translateY(-6px);}
+  p{margin:0; max-width:70ch;} .lede{color:var(--ink-2);}
+
+  /* 共通ルール */
+  .rules{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule);}
+  .rule{background:var(--card); padding:16px 18px; display:flex; flex-direction:column; gap:6px;}
+  .rule .rn{font-family:"Yu Mincho","游明朝",serif; font-size:12px; letter-spacing:.16em; color:var(--gold);}
+  .rule .rt{font-weight:600; font-size:14.5px; line-height:1.5;}
+  .rule .rb{font-size:12.5px; color:var(--ink-2); line-height:1.7;}
+
+  /* 実験カード */
+  .exp{border:1px solid var(--rule); background:var(--card); display:flex; flex-direction:column;}
+  .exp + .exp{margin-top:-1px;}
+  .ehead{padding:16px 20px; border-bottom:1px solid var(--rule); background:var(--bar);
+         display:flex; gap:14px; align-items:baseline; flex-wrap:wrap;}
+  .eno{font-family:"Yu Mincho","游明朝",serif; font-size:26px; color:var(--gold); line-height:1;}
+  .etitle{font-weight:600; font-size:17px; flex:1; min-width:220px;}
+  .prio{font-size:10.5px; letter-spacing:.08em; padding:2px 9px; border:1px solid currentColor; border-radius:2px; white-space:nowrap;}
+  .p1{color:var(--vermilion);} .p2{color:var(--gold);} .p3{color:var(--ink-3);}
+  .ebody{padding:18px 20px; display:flex; flex-direction:column; gap:16px;}
+  .row{display:flex; flex-direction:column; gap:5px;}
+  .lab{font-size:11px; letter-spacing:.14em; color:var(--ink-3);}
+  .val{font-size:13.5px; color:var(--ink-2); line-height:1.75;}
+  .val strong{color:var(--ink);}
+  .split{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  @media (max-width:600px){ .split{grid-template-columns:1fr;} }
+  .chips{display:flex; gap:6px; flex-wrap:wrap;}
+  .chip{font-size:11.5px; padding:2px 9px; border:1px solid var(--rule); border-radius:2px; color:var(--ink-2); background:var(--paper);}
+  .chip.var{border-color:var(--vermilion); color:var(--vermilion); font-weight:600;}
+  .chip.fix{border-color:var(--rule); color:var(--ink-3);}
+
+  .tw{overflow-x:auto; border:1px solid var(--rule-2);}
+  table{border-collapse:collapse; width:100%; font-size:12.5px; min-width:520px;}
+  th,td{padding:7px 10px; text-align:left; border-bottom:1px solid var(--rule-2); white-space:nowrap;}
+  th{font-size:10.5px; letter-spacing:.08em; color:var(--ink-3); background:var(--paper);}
+  td.n,th.n{text-align:right; font-variant-numeric:tabular-nums;}
+  tr:last-child td{border-bottom:none;}
+  .win{color:var(--moss); font-weight:600;}
+
+  .verdict{border-left:3px solid var(--indigo); padding:12px 16px; background:var(--paper);
+           font-size:13px; color:var(--ink-2); line-height:1.75;}
+  .verdict b{color:var(--ink);}
+
+  .cal{overflow-x:auto; border:1px solid var(--rule); background:var(--card);}
+  .cal table{min-width:640px; font-size:12.5px;}
+  .cal caption{text-align:left; padding:11px 14px; font-size:11.5px; letter-spacing:.1em;
+               color:var(--ink-3); border-bottom:1px solid var(--rule);}
+  .tag{font-size:10.5px; padding:1px 7px; border-radius:2px; border:1px solid currentColor;}
+  .t1{color:var(--vermilion);} .t2{color:var(--gold);} .t3{color:var(--indigo);} .t4{color:var(--moss);}
+
+  footer{font-size:12px; color:var(--ink-3); border-top:1px solid var(--rule); padding-top:18px; line-height:1.8;}
+  a{color:var(--indigo);}
+  @media (max-width:640px){ .wrap{padding:34px 16px 64px; gap:40px;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow"><span>TOKI</span><span>検証パターン</span><span>2026-07-31 設計</span></div>
+  <h1>次に何を確かめるか<br>&mdash; 変数を1つずつ潰す5つの実験</h1>
+  <p class="sub">30投稿の分析で「効いていそうだが分離できていない」変数が残った。勘で量産する前に、1回につき1つだけ動かして確かめる。どれも通常の投稿枠で回せるので、追加のコストはほぼ制作の組み替えだけになる。</p>
+</header>
+
+<section>
+  <h2>実験の共通ルール</h2>
+  <p class="lede">この5つを守らないと、何が効いたのか今回と同じように分からなくなる。</p>
+  <div class="rules">
+    <div class="rule">
+      <div class="rn">RULE 1</div>
+      <div class="rt">1回に動かす変数は1つだけ</div>
+      <div class="rb">8億円の3バージョンは、テイストと縦横と箱と時刻が同時に動いていた。結果的に縦横の差は取れたが、テイストの差は取れていない。</div>
+    </div>
+    <div class="rule">
+      <div class="rn">RULE 2</div>
+      <div class="rt">本文は完全に同一にする</div>
+      <div class="rb">内容の面白さは最大のノイズ。同じ本文を使い回せば内容を定数にできる。テイストや縦横の検証では必ず本文を固定する。</div>
+    </div>
+    <div class="rule">
+      <div class="rn">RULE 3</div>
+      <div class="rt">判定は投稿24時間後の再生数で行う</div>
+      <div class="rb">今日、takeの297億円は投稿1時間で208再生・いいね率2.40%だったが、3,785再生に伸びた時点で0.79%まで落ちた。<strong>分母が小さいうちの反応率は使えない</strong>。</div>
+    </div>
+    <div class="rule">
+      <div class="rn">RULE 4</div>
+      <div class="rt">2倍未満の差は「判定保留」にする</div>
+      <div class="rb">同じ型でも箱と日で再生が数倍ぶれる。縦横は6.5倍差だったので結論を出せたが、1.5倍程度なら偶然の範囲として扱い、もう1回まわす。</div>
+    </div>
+    <div class="rule">
+      <div class="rn">RULE 5</div>
+      <div class="rt">箱の地力差はクロスオーバーで打ち消す</div>
+      <div class="rb">A案をManuel・B案をintegratorで出したら、次は入れ替えて同じ比較をやる。2回とも同じ側が勝てば箱ではなく変数の効果と言える。</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>実験1 &mdash; bioに「フォローする理由」を書く</h2>
+
+  <div class="exp">
+    <div class="ehead">
+      <span class="eno num">01</span>
+      <span class="etitle">プロフィール文だけを変えて、フォロワー転換が動くか見る</span>
+      <span class="prio p1">最優先</span>
+    </div>
+    <div class="ebody">
+      <div class="row">
+        <div class="lab">なぜ最優先か</div>
+        <div class="val">総再生100,929に対して、この4日で増えたフォロワーは6箱合計で13人程度。<strong>リンク解禁の条件がフォロワー数である以上、ここが全体のボトルネック</strong>になっている。しかも制作コストがゼロで、今日中に着手できて、投稿の実験と並行して回せる。</div>
+      </div>
+      <div class="split">
+        <div class="row">
+          <div class="lab">動かすもの</div>
+          <div class="chips"><span class="chip var">bioの文章</span></div>
+        </div>
+        <div class="row">
+          <div class="lab">固定するもの</div>
+          <div class="chips"><span class="chip fix">投稿内容</span><span class="chip fix">投稿頻度</span><span class="chip fix">箱</span></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="lab">手順</div>
+        <div class="val">育成中の4箱を2つに割る。<strong>介入群＝Manuel と 睡眠学</strong>のbioに「何を毎日投稿しているか」を一行で書く。たとえば「毎晩21時、眠りの話をひとつ。」のように、次の投稿を期待させる形にする。<strong>対照群＝integrator と あんな</strong>は現状のまま触らない。3日間そのまま投稿を続け、再生あたりのフォロワー増を比べる。</div>
+      </div>
+      <div class="row">
+        <div class="lab">現状の値（起点）</div>
+        <div class="tw"><table>
+          <thead><tr><th>箱</th><th>群</th><th class="n">現フォロワー</th><th>bio</th></tr></thead>
+          <tbody>
+            <tr><td>Manuel</td><td>介入</td><td class="n">12</td><td>tiktokやめたい</td></tr>
+            <tr><td>睡眠学</td><td>介入</td><td class="n">1</td><td>未記入</td></tr>
+            <tr><td>integrator</td><td>対照</td><td class="n">6</td><td>tiktok見るのやめよ</td></tr>
+            <tr><td>あんな</td><td>対照</td><td class="n">33</td><td>未記入</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="verdict"><b>判定：</b>3日後に「増えたフォロワー ÷ その間の再生数」を群ごとに比較する。介入群が対照群の2倍以上なら、bioの文章が効くと判断して残り2箱にも展開する。差が出なければ、問題はbioではなくプロフィールに到達していないこと（＝スライド末尾のCTA）にあると分かるので、実験3へ進む。</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>実験2 &mdash; 縦書きは睡眠ネタでも効くか</h2>
+
+  <div class="exp">
+    <div class="ehead">
+      <span class="eno num">02</span>
+      <span class="etitle">勝ち筋の睡眠ノウハウを縦書き化して、横書き原版と比べる</span>
+      <span class="prio p1">最優先</span>
+    </div>
+    <div class="ebody">
+      <div class="row">
+        <div class="lab">何がまだ分かっていないか</div>
+        <div class="val">縦書きが横書きの6.5倍を取ったのは事実だが、<strong>縦書き3本はすべて社会・時事の題材</strong>だった。1枚1メッセージでスワイプさせる形が、重い話題と相性が良いだけかもしれない。睡眠ノウハウでも同じ差が出るなら、縦書きを全面的に標準にしてよい。</div>
+      </div>
+      <div class="split">
+        <div class="row">
+          <div class="lab">動かすもの</div>
+          <div class="chips"><span class="chip var">縦書き / 横書き</span></div>
+        </div>
+        <div class="row">
+          <div class="lab">固定するもの</div>
+          <div class="chips"><span class="chip fix">本文</span><span class="chip fix">古文書テイスト</span><span class="chip fix">投稿時刻</span></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="lab">素材</div>
+        <div class="val"><strong>「10-3-2-1-0」</strong>を使う。保存率0.408%で30本中2位、いいね率1.97%も上位で、横書き版の実績（Manuel 2,942再生）が既にあるため比較の基準が取れている。本文を1枚1メッセージに割って28枚前後の縦書き版を作る。</div>
+      </div>
+      <div class="row">
+        <div class="lab">組み方（クロスオーバー）</div>
+        <div class="tw"><table>
+          <thead><tr><th>ラウンド</th><th>素材</th><th>縦書き版</th><th>横書き版</th></tr></thead>
+          <tbody>
+            <tr><td>1日目</td><td>10-3-2-1-0</td><td>integrator</td><td>あんな</td></tr>
+            <tr><td>3日目</td><td>寝る前NG5選</td><td>あんな</td><td>integrator</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="verdict"><b>判定：</b>2ラウンドとも縦書き側が2倍以上勝てば、<b>縦書きを全ジャンルの標準にする</b>。時事だけで効いて睡眠では効かないなら、縦書きは題材を選ぶ形式だと分かるので、時事・論争系にだけ使う。なお同一素材を2箱に同時投下するのは重複判定のリスクがあるため、テイストを変えて別物にしておく。</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>実験3 &mdash; 育成中の箱のCTAをフォロー誘導に変える</h2>
+
+  <div class="exp">
+    <div class="ehead">
+      <span class="eno num">03</span>
+      <span class="etitle">飛び先のない診断CTAを、フォロー誘導に差し替える</span>
+      <span class="prio p2">高</span>
+    </div>
+    <div class="ebody">
+      <div class="row">
+        <div class="lab">何を確かめるか</div>
+        <div class="val">睡眠シリーズの最終枚は「睡眠力診断」への誘導になっているが、リンクの無い4箱では飛び先が存在せず空振りしている。同じ枠を「続きは明日」「他の◯選も出す」に変えたとき、フォロワー転換が動くか。実験1がbioの効果を測るのに対し、<strong>これはスライド側の効果を測る</strong>。</div>
+      </div>
+      <div class="split">
+        <div class="row">
+          <div class="lab">動かすもの</div>
+          <div class="chips"><span class="chip var">最終枚のCTA</span></div>
+        </div>
+        <div class="row">
+          <div class="lab">固定するもの</div>
+          <div class="chips"><span class="chip fix">本文1〜8枚目</span><span class="chip fix">テイスト</span><span class="chip fix">箱</span><span class="chip fix">時刻</span></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="lab">手順</div>
+        <div class="val">育成中の4箱に出す睡眠ノウハウ4本のうち、2本を診断CTAのまま、2本をフォロー誘導に差し替える。本文と枚数は揃え、最終枚だけを入れ替える。同じ箱の中で交互に出すと箱の差が消えるので、<strong>1箱につき診断CTA1本・フォロー誘導1本</strong>を2日続けて出すのが最も綺麗になる。</div>
+      </div>
+      <div class="verdict"><b>判定：</b>実験1と同時に走らせると、bioとCTAのどちらが効いたか分からなくなる。<b>実験1を先に3日回し、その結果が出てから着手する</b>。順番を守ることがこの実験の肝になる。</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>実験4 &mdash; テイスト単体の効果</h2>
+
+  <div class="exp">
+    <div class="ehead">
+      <span class="eno num">04</span>
+      <span class="etitle">黒基調と古文書を、縦書き・同時刻で正面から比べる</span>
+      <span class="prio p2">高</span>
+    </div>
+    <div class="ebody">
+      <div class="row">
+        <div class="lab">何がまだ分かっていないか</div>
+        <div class="val">8億円の縦書きは黒基調35,200・古文書15,400で2.3倍の差がついたが、箱（integrator / Manuel）と投稿時刻（12:53 / 15:47）も同時に動いている。テイスト別の集計では総合スコアは古文書42.1・黒基調37.1と逆転しており、<strong>どちらが強いのか結論が出ていない</strong>。</div>
+      </div>
+      <div class="split">
+        <div class="row">
+          <div class="lab">動かすもの</div>
+          <div class="chips"><span class="chip var">黒基調 / 古文書</span></div>
+        </div>
+        <div class="row">
+          <div class="lab">固定するもの</div>
+          <div class="chips"><span class="chip fix">本文</span><span class="chip fix">縦書き</span><span class="chip fix">枚数</span><span class="chip fix">投稿時刻（30分以内）</span></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="lab">既存データの整理</div>
+        <div class="tw"><table>
+          <thead><tr><th>版</th><th>箱</th><th class="n">再生</th><th class="n">いいね率</th><th class="n">コメント</th></tr></thead>
+          <tbody>
+            <tr><td>黒基調・縦書き</td><td>integrator</td><td class="n win">35,200</td><td class="n win">1.89%</td><td class="n win">19</td></tr>
+            <tr><td>古文書・縦書き</td><td>Manuel</td><td class="n">15,400</td><td class="n">1.45%</td><td class="n">2</td></tr>
+          </tbody>
+        </table></div>
+        <div class="val" style="margin-top:8px">とくに<strong>コメント19対2という差</strong>が大きい。黒基調のほうが議論を起こす力が強い可能性があるが、題材が同じである以上これはテイストか箱のどちらかで説明するしかない。</div>
+      </div>
+      <div class="verdict"><b>判定：</b>クロスオーバーで2ラウンド。1回目は黒＝Manuel／古文書＝integrator と<b>今回と逆に割り当てる</b>。それでも黒基調が勝てばテイストの効果、逆なら箱の効果。コメント数も併せて見る。</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>実験5 &mdash; 投稿時間</h2>
+
+  <div class="exp">
+    <div class="ehead">
+      <span class="eno num">05</span>
+      <span class="etitle">同じ箱・同じ型で、時刻だけをずらす</span>
+      <span class="prio p3">後回し</span>
+    </div>
+    <div class="ebody">
+      <div class="row">
+        <div class="lab">なぜ後回しか</div>
+        <div class="val">現データでは<strong>完全に判定不能</strong>。12〜15時の6本はすべて7/31の投稿で、経過時間の短さと時刻が分離できていない。ただし効果があったとしても、テイストや縦横ほど大きくない可能性が高く、優先度は下がる。</div>
+      </div>
+      <div class="split">
+        <div class="row">
+          <div class="lab">動かすもの</div>
+          <div class="chips"><span class="chip var">投稿時刻</span></div>
+        </div>
+        <div class="row">
+          <div class="lab">固定するもの</div>
+          <div class="chips"><span class="chip fix">箱</span><span class="chip fix">型（数字型）</span><span class="chip fix">テイスト</span><span class="chip fix">枚数</span></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="lab">手順</div>
+        <div class="val">同じ箱に同じ本文は出せないので、<strong>同じ型の別本文</strong>を使う。Manuelに数字型を4日連続で出し、時刻を 7時 / 12時 / 19時 / 22時 に振る。内容の差がノイズになるため、最低でも2周（8本）は必要になる。判定は24時間後の再生数の中央値。</div>
+      </div>
+      <div class="verdict"><b>判定：</b>2周して同じ時間帯が両方とも上位なら採用する。ばらつきが大きく差が2倍未満なら、<b>投稿時刻は運用の都合で決めてよい変数</b>として扱い、それ以上追わない。</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>7日間の回し方</h2>
+  <p class="lede">実験1は投稿と独立して走るので初日から。実験3は実験1の結果が出るまで着手しない。</p>
+  <div class="cal">
+    <table>
+      <caption>推奨スケジュール（8/1 &ndash; 8/7）</caption>
+      <thead><tr><th>日</th><th>やること</th><th>実験</th><th>備考</th></tr></thead>
+      <tbody>
+        <tr><td>8/1</td><td>Manuel・睡眠学のbioを書き換える</td><td><span class="tag t1">実験1 開始</span></td><td>制作コストなし。朝のうちに</td></tr>
+        <tr><td>8/1</td><td>10-3-2-1-0 の縦書き版を制作 → integrator へ</td><td><span class="tag t2">実験2 R1</span></td><td>横書き版はあんなへ同日</td></tr>
+        <tr><td>8/2</td><td>8億円と同型の新作を、黒＝Manuel／古文書＝integrator</td><td><span class="tag t3">実験4 R1</span></td><td>前回と逆の割り当て</td></tr>
+        <tr><td>8/3</td><td>寝る前NG5選 の縦書き版 → あんな／横書き → integrator</td><td><span class="tag t2">実験2 R2</span></td><td>箱を入れ替える</td></tr>
+        <tr><td>8/4</td><td>実験1の判定。効いていれば残り2箱にも展開</td><td><span class="tag t1">実験1 判定</span></td><td>再生あたりフォロワー増で比較</td></tr>
+        <tr><td>8/4</td><td>実験4 R2（箱を入れ替えてもう1本）</td><td><span class="tag t3">実験4 R2</span></td><td></td></tr>
+        <tr><td>8/5</td><td>実験2の判定 → 縦書きの適用範囲を決める</td><td><span class="tag t2">実験2 判定</span></td><td>全ジャンル標準にするか、時事限定か</td></tr>
+        <tr><td>8/5</td><td>CTA差し替え版の制作開始</td><td><span class="tag t4">実験3 開始</span></td><td>実験1の結果を見てから</td></tr>
+        <tr><td>8/6&ndash;7</td><td>実験3を回しつつ、勝った形式で通常投稿</td><td><span class="tag t4">実験3</span></td><td>実験5は来週以降</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>この期間、やらないこと</h2>
+  <p class="lede">実験の邪魔になるので止めておく。</p>
+  <div class="rules">
+    <div class="rule">
+      <div class="rn">STOP 1</div>
+      <div class="rt">白・淡色テイストを使わない</div>
+      <div class="rb">4本すべて下位、保存率0.026%は他区分の1/4以下。比較の足を引っ張るだけなので、この期間は黒基調と古文書の2択に絞る。</div>
+    </div>
+    <div class="rule">
+      <div class="rn">STOP 2</div>
+      <div class="rt">賛否併記のVS構成を作らない</div>
+      <div class="rb">休日の予定論争・夏と冬の眠り・週休3日論争がいずれも下位。ずばずば型の鉄則どおり、片側に振り切る。</div>
+    </div>
+    <div class="rule">
+      <div class="rn">STOP 3</div>
+      <div class="rt">同じ変数を2つ同時に動かさない</div>
+      <div class="rb">「縦書きにしてテイストも変えて時刻も変えた」をやると、また今回と同じ状態に戻る。迷ったら変えないほうを選ぶ。</div>
+    </div>
+    <div class="rule">
+      <div class="rn">STOP 4</div>
+      <div class="rt">初速で型の良し悪しを決めない</div>
+      <div class="rb">neru102の「答えようのない質問」は19時に480再生で不発に見えたが、翌朝には8,168になっていた。24時間は待つ。</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  設計の根拠は 2026-07-31 21:10 時点の30投稿分析（<a href="scorecard.html">スコアカード</a>）と<a href="index.html">マーケティング導線マップ</a>。実験を1つ回すごとに、結果をスコアカード側へ反映していく。
+</footer>
+
+</div>
+</body>
+</html>
