@@ -9,15 +9,13 @@
   :root{
     --paper:#e9e6df; --card:#f3f1ec; --ink:#17181c; --ink-2:#4a4b52; --ink-3:#7b7a78;
     --rule:#cdc8bd; --rule-2:#ded9d0;
-    --indigo:#24486b; --gold:#9a7530; --vermilion:#9c3b28; --moss:#4a6b45;
-    --bar:#24486b1a;
+    --indigo:#24486b; --gold:#9a7530; --vermilion:#9c3b28; --moss:#4a6b45; --bar:#24486b1a;
   }
   @media (prefers-color-scheme: dark){
     :root{
       --paper:#0e1014; --card:#171a20; --ink:#e6e3db; --ink-2:#a9a69e; --ink-3:#77746e;
       --rule:#2b2f38; --rule-2:#22262d;
-      --indigo:#7ba8cf; --gold:#d8b268; --vermilion:#d9604f; --moss:#8bb383;
-      --bar:#7ba8cf1a;
+      --indigo:#7ba8cf; --gold:#d8b268; --vermilion:#d9604f; --moss:#8bb383; --bar:#7ba8cf1a;
     }
   }
   :root[data-theme="dark"]{
@@ -32,11 +30,9 @@
   }
   *{box-sizing:border-box;}
   html{background:var(--paper);}
-  body{
-    margin:0; background:var(--paper); color:var(--ink);
+  body{margin:0; background:var(--paper); color:var(--ink);
     font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Meiryo",system-ui,sans-serif;
-    font-size:15px; line-height:1.75; -webkit-font-smoothing:antialiased;
-  }
+    font-size:15px; line-height:1.75; -webkit-font-smoothing:antialiased;}
   .wrap{max-width:1120px; margin:0 auto; padding:56px 24px 96px; display:flex; flex-direction:column; gap:52px;}
   .num{font-variant-numeric:tabular-nums;}
   header{display:flex; flex-direction:column; gap:16px; border-bottom:2px solid var(--ink); padding-bottom:24px;}
@@ -50,33 +46,32 @@
   h2::before{content:""; width:22px; height:2px; background:var(--gold); flex:none; transform:translateY(-6px);}
   p{margin:0; max-width:70ch;} .lede{color:var(--ink-2);}
 
-  /* funnel */
+  .gate{border-left:3px solid var(--indigo); background:var(--card); padding:16px 20px;
+        display:flex; flex-direction:column; gap:8px;}
+  .gate .gt{font-weight:600; font-size:14px; color:var(--indigo); letter-spacing:.06em;}
+  .gate p{font-size:13.5px; color:var(--ink-2); line-height:1.75;}
+
   .stage{display:flex; flex-direction:column; gap:12px;}
   .stagehead{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;}
   .stagehead .n{font-family:"Yu Mincho","游明朝",serif; font-size:13px; letter-spacing:.2em; color:var(--gold);}
   .stagehead .t{font-weight:600; font-size:16px;}
   .stagehead .m{font-size:12.5px; color:var(--ink-3);}
-  .boxes{display:grid; grid-template-columns:repeat(auto-fit,minmax(168px,1fr)); gap:10px;}
-  .box{
-    background:var(--card); border:1px solid var(--rule-2); border-left-width:3px;
-    padding:12px 14px; display:flex; flex-direction:column; gap:5px;
-  }
+  .boxes{display:grid; grid-template-columns:repeat(auto-fit,minmax(172px,1fr)); gap:10px;}
+  .box{background:var(--card); border:1px solid var(--rule-2); border-left-width:3px;
+       padding:12px 14px; display:flex; flex-direction:column; gap:5px;}
   .box.live{border-left-color:var(--moss);}
-  .box.dead{border-left-color:var(--vermilion);}
+  .box.grow{border-left-color:var(--gold);}
   .box .bn{font-weight:600; font-size:14px; display:flex; justify-content:space-between; gap:8px; align-items:baseline;}
   .box .bv{font-size:19px; font-weight:600;}
   .box .bm{font-size:11.5px; color:var(--ink-3); line-height:1.55;}
-  .box .tag{font-size:10.5px; letter-spacing:.05em; padding:0 6px; border:1px solid currentColor; border-radius:2px; white-space:nowrap;}
-  .tag.ok{color:var(--moss);} .tag.ng{color:var(--vermilion);}
-
+  .box .tag{font-size:10.5px; padding:0 6px; border:1px solid currentColor; border-radius:2px; white-space:nowrap;}
+  .tag.ok{color:var(--moss);} .tag.gw{color:var(--gold);}
   .flow{display:flex; align-items:center; gap:12px; padding-left:2px; color:var(--ink-3); font-size:12.5px;}
   .flow::before{content:""; width:1px; height:26px; background:var(--rule); margin-left:14px;}
-  .leak{color:var(--vermilion); font-weight:600;}
+  .hot{color:var(--vermilion); font-weight:600;}
 
-  .node{
-    background:var(--card); border:1px solid var(--rule); padding:16px 18px;
-    display:flex; flex-direction:column; gap:6px; max-width:560px;
-  }
+  .node{background:var(--card); border:1px solid var(--rule); padding:16px 18px;
+        display:flex; flex-direction:column; gap:6px; max-width:560px;}
   .node .nh{font-weight:600;}
   .node .nu{font-family:ui-monospace,SFMono-Regular,Consolas,monospace; font-size:12px; color:var(--indigo); word-break:break-all;}
   .node .nb{font-size:12.5px; color:var(--ink-2); line-height:1.65;}
@@ -85,6 +80,7 @@
   .orphan{background:var(--card); border:1px dashed var(--rule); padding:14px 16px; display:flex; flex-direction:column; gap:6px;}
   .orphan .oh{font-weight:600; font-size:14px;}
   .orphan .ob{font-size:12.5px; color:var(--ink-2); line-height:1.65;}
+  .orphan code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace; font-size:11.5px; background:var(--bar); padding:1px 4px;}
 
   .issues{display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule);}
   .issue{background:var(--card); padding:17px 19px; display:flex; flex-direction:column; gap:7px;}
@@ -92,13 +88,13 @@
   .sev.hi{color:var(--vermilion);} .sev.mid{color:var(--gold);} .sev.lo{color:var(--ink-3);}
   .issue .ih{font-weight:600; font-size:14.5px; line-height:1.5;}
   .issue .ib{font-size:12.5px; color:var(--ink-2); line-height:1.7;}
+  .issue code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace; font-size:11.5px; background:var(--bar); padding:1px 4px;}
 
   table{border-collapse:collapse; width:100%; font-size:13px;}
   .tw{overflow-x:auto; border:1px solid var(--rule); background:var(--card);}
   th,td{padding:8px 11px; text-align:right; border-bottom:1px solid var(--rule-2); white-space:nowrap;}
   th{font-size:10.5px; letter-spacing:.08em; color:var(--ink-3); border-bottom:1px solid var(--rule);}
   td.l,th.l{text-align:left;}
-  tfoot td{font-weight:600; border-bottom:none;}
   a{color:var(--indigo);}
   footer{font-size:12px; color:var(--ink-3); border-top:1px solid var(--rule); padding-top:18px; line-height:1.8;}
   @media (max-width:640px){ .wrap{padding:34px 16px 64px; gap:40px;} }
@@ -108,57 +104,62 @@
 <div class="wrap">
 
 <header>
-  <div class="eyebrow"><span>TOKI</span><span>マーケティング導線マップ</span><span>2026-07-31 時点</span></div>
-  <h1>TikTok 6箱から睡眠力診断までの<br>導線と、その断線箇所</h1>
-  <p class="sub">投稿から診断到達までの経路を実測でたどった図。7/31時点で総再生67,377のうち<strong>55,227（82%）が遷移先を持たないまま消えている</strong>。断線は制作物ではなくプロフィール設定側にある。</p>
+  <div class="eyebrow"><span>TOKI</span><span>マーケティング導線マップ</span><span>2026-07-31 時点</span><span>第2版</span></div>
+  <h1>TikTok 6箱から睡眠力診断まで<br>&mdash; 導線と、その手前で詰まっている場所</h1>
+  <p class="sub">投稿から診断到達までの経路を実測でたどった図。リンクを置けているのは6箱中2箱だが、これは設定漏れではなくフォロワー数の条件を満たしていないためで、残り4箱は育成段階にある。詰まっているのはリンクの手前、<strong>再生からフォロワーへの転換</strong>にある。</p>
 </header>
+
+<div class="gate">
+  <div class="gt">前提 &mdash; リンクは置きたくても置けない</div>
+  <p>TikTokのプロフィールにリンクを設置するにはフォロワー数の条件がある。take（508人）と neru102（280人）は中古アカウントを転用した際に既に枠を持っていた箱で、残り4箱は条件に届いていない。したがって<strong>リンクの無い4箱で再生数を追うのは正しい戦略</strong>であり、この図では損失ではなく「まだ到達していない段階」として扱う。</p>
+</div>
 
 <section>
   <h2>導線の全体像</h2>
 
   <div class="stage">
     <div class="stagehead">
-      <span class="n">STAGE 1</span><span class="t">TikTok 6箱 — 到達</span>
-      <span class="m">新運用 2026-07-28以降の累計再生</span>
+      <span class="n">STAGE 1</span><span class="t">TikTok 6箱 &mdash; 到達</span>
+      <span class="m">新運用 2026-07-28以降の累計再生 / フォロワー</span>
     </div>
     <div class="boxes">
-      <div class="box dead">
-        <div class="bn"><span>Manuel</span><span class="tag ng">リンクなし</span></div>
+      <div class="box grow">
+        <div class="bn"><span>Manuel</span><span class="tag gw">育成中</span></div>
         <div class="bv num">25,995</div>
-        <div class="bm">6本 / bio「tiktokやめたい」<br>最大の到達量を持つ箱</div>
+        <div class="bm">6本 / <strong>フォロワー7人</strong><br>bio「tiktokやめたい」</div>
       </div>
-      <div class="box dead">
-        <div class="bn"><span>integrator</span><span class="tag ng">リンクなし</span></div>
+      <div class="box grow">
+        <div class="bn"><span>integrator</span><span class="tag gw">育成中</span></div>
         <div class="bv num">15,768</div>
-        <div class="bm">5本 / bio「tiktok見るのやめよ」<br>単発13,700の当たりを保有</div>
+        <div class="bm">5本 / <strong>フォロワー1人</strong><br>bio「tiktok見るのやめよ」</div>
       </div>
-      <div class="box dead">
-        <div class="bn"><span>あんな</span><span class="tag ng">リンクなし</span></div>
+      <div class="box grow">
+        <div class="bn"><span>あんな</span><span class="tag gw">育成中</span></div>
         <div class="bv num">9,182</div>
-        <div class="bm">5本 / bio 未記入<br>フォロワー32</div>
+        <div class="bm">5本 / フォロワー32人<br>bio 未記入</div>
       </div>
-      <div class="box dead">
-        <div class="bn"><span>睡眠学</span><span class="tag ng">リンクなし</span></div>
+      <div class="box grow">
+        <div class="bn"><span>睡眠学</span><span class="tag gw">育成中</span></div>
         <div class="bv num">4,282</div>
-        <div class="bm">5本 / bio 未記入<br>保存率0.180%と質は高い</div>
+        <div class="bm">5本 / <strong>フォロワー1人</strong><br>bio 未記入</div>
       </div>
       <div class="box live">
-        <div class="bn"><span>neru102</span><span class="tag ok">リンクあり</span></div>
+        <div class="bn"><span>neru102</span><span class="tag ok">解禁済</span></div>
         <div class="bv num">8,736</div>
-        <div class="bm">3本 / bio「行動分析をする診断」<br>x.gd/qNIVW・フォロワー280</div>
+        <div class="bm">3本 / フォロワー280人<br>bio「行動分析をする診断」</div>
       </div>
       <div class="box live">
-        <div class="bn"><span>take</span><span class="tag ok">リンクあり</span></div>
+        <div class="bn"><span>take</span><span class="tag ok">解禁済</span></div>
         <div class="bv num">3,414</div>
-        <div class="bm">6本 / bio「睡眠診断作りました」<br>x.gd/Gqyho・フォロワー508</div>
+        <div class="bm">6本 / フォロワー508人<br>bio「睡眠診断作りました」</div>
       </div>
     </div>
   </div>
 
-  <div class="flow"><span>到達した67,377のうち、次のステージへ進める資格があるのは <strong>12,150（18%）</strong>だけ。<span class="leak">55,227が断線</span></span></div>
+  <div class="flow"><span><span class="hot">ここが詰まっている。</span>Manuel は 25,995再生を集めてフォロワー7人、integrator は 15,768再生で1人。この転換が起きない限り、再生をいくら積んでもリンクは解禁されない</span></div>
 
   <div class="stage">
-    <div class="stagehead"><span class="n">STAGE 2</span><span class="t">プロフィールの短縮リンク</span><span class="m">2箱のみ</span></div>
+    <div class="stagehead"><span class="n">STAGE 2</span><span class="t">プロフィールの短縮リンク</span><span class="m">解禁済みの2箱のみ</span></div>
     <div class="boxes" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr));">
       <div class="box live">
         <div class="bn"><span>x.gd/Gqyho</span></div>
@@ -199,22 +200,32 @@
 </section>
 
 <section>
-  <h2>断線箇所と損失</h2>
+  <h2>詰まっている場所と打ち手</h2>
   <div class="issues">
     <div class="issue">
-      <div class="sev hi">最優先 &mdash; 損失55,227再生</div>
-      <div class="ih">4箱の bio にリンクが無い</div>
-      <div class="ib">Manuel・integrator・あんな・睡眠学。到達量の上位2箱がどちらもここに入っているため、損失は量的に最大。作業は bio 編集4回で完了し、制作物の変更は要らない。</div>
+      <div class="sev hi">最優先 &mdash; 全体のボトルネック</div>
+      <div class="ih">再生がフォロワーに変わっていない</div>
+      <div class="ib">Manuel <code>25,995再生 → 7人</code>、integrator <code>15,768 → 1人</code>、睡眠学 <code>4,282 → 1人</code>。転換率は0.03%を切る。リンク解禁の条件がフォロワー数である以上、ここが動かなければ何本バズっても STAGE 2 には進めない。</div>
     </div>
     <div class="issue">
-      <div class="sev mid">中 &mdash; 計測不能</div>
+      <div class="sev hi">今すぐできる</div>
+      <div class="ih">bio に「フォローする理由」が書かれていない</div>
+      <div class="ib">Manuel「tiktokやめたい」、integrator「tiktok見るのやめよ」、あんなと睡眠学は未記入。<strong>リンクは置けなくても文章は今すぐ置ける。</strong>何を毎日投稿しているのかを一行書くだけで、プロフィール到達後の転換は変わる。解禁への最短路。</div>
+    </div>
+    <div class="issue">
+      <div class="sev mid">中 &mdash; 空振り</div>
+      <div class="ih">育成中の箱でも末尾が診断CTAになっている</div>
+      <div class="ib">睡眠シリーズのスライドは最終枚が「睡眠力診断」への誘導だが、リンクの無い4箱では飛び先が存在しない。同じ枠をフォロー誘導に差し替えれば、育成期の目的と一致する。</div>
+    </div>
+    <div class="issue">
+      <div class="sev mid">中 &mdash; 配置ミス</div>
+      <div class="ih">バズ題材と送客題材が逆の箱に入っている</div>
+      <div class="ib">リンクを持つ take に時事ネタ「297億円」（208再生）、neru102 には論争3本。一方リンクの無い Manuel に保存率最高の「10-3-2-1-0」（0.408%）、あんなに「寝る前NG5選」（0.305%）がある。<strong>バズ題材は育成箱、保存される題材は解禁済み箱</strong>が正しい。</div>
+    </div>
+    <div class="issue">
+      <div class="sev mid">中 &mdash; 期待とのずれ</div>
       <div class="ih">2本の短縮URLが同じページに着地する</div>
-      <div class="ib">bio の文言は「睡眠診断」と「行動分析診断」で違うのに、実際は同じ診断に飛ぶ。短縮URLが分かれているので流入元の切り分けは可能だが、期待と中身がずれている状態。文言を実物に合わせるか、夜の主権診断を neru102 側の着地に割り当てるかの二択。</div>
-    </div>
-    <div class="issue">
-      <div class="sev mid">中 &mdash; 資産の遊休</div>
-      <div class="ih">夜の主権診断が導線から外れている</div>
-      <div class="ib">公開済みで動くのに流入がゼロ。箱ごとに診断を出し分ければ、どちらの診断が回答完了まで到達するかを比較できる。</div>
+      <div class="ib">bio の文言は「睡眠診断」と「行動分析診断」で違うのに、実際は同じ診断に飛ぶ。短縮URLが分かれているので流入元の切り分けは可能だが、文言を実物に合わせるか、夜の主権診断を neru102 側の着地に割り当てるかの二択。</div>
     </div>
     <div class="issue">
       <div class="sev lo">低 &mdash; 将来の設計</div>
@@ -225,28 +236,25 @@
 </section>
 
 <section>
-  <h2>箱別の損失内訳</h2>
+  <h2>箱別の状況</h2>
   <div class="tw">
     <table>
-      <thead><tr><th class="l">箱</th><th>本数</th><th>累計再生</th><th>保存率</th><th class="l">bio リンク</th><th class="l">状態</th></tr></thead>
+      <thead><tr><th class="l">箱</th><th>本数</th><th>累計再生</th><th>フォロワー</th><th>再生/フォロワー</th><th>いいね率</th><th class="l">段階</th></tr></thead>
       <tbody>
-        <tr><td class="l">Manuel</td><td class="num">6</td><td class="num">25,995</td><td class="num">0.177%</td><td class="l">なし</td><td class="l" style="color:var(--vermilion)">断線</td></tr>
-        <tr><td class="l">integrator</td><td class="num">5</td><td class="num">15,768</td><td class="num">0.065%</td><td class="l">なし</td><td class="l" style="color:var(--vermilion)">断線</td></tr>
-        <tr><td class="l">あんな</td><td class="num">5</td><td class="num">9,182</td><td class="num">0.116%</td><td class="l">なし</td><td class="l" style="color:var(--vermilion)">断線</td></tr>
-        <tr><td class="l">neru102</td><td class="num">3</td><td class="num">8,736</td><td class="num">0.095%</td><td class="l">x.gd/qNIVW</td><td class="l" style="color:var(--moss)">接続</td></tr>
-        <tr><td class="l">睡眠学</td><td class="num">5</td><td class="num">4,282</td><td class="num">0.180%</td><td class="l">なし</td><td class="l" style="color:var(--vermilion)">断線</td></tr>
-        <tr><td class="l">take</td><td class="num">6</td><td class="num">3,414</td><td class="num">0.086%</td><td class="l">x.gd/Gqyho</td><td class="l" style="color:var(--moss)">接続</td></tr>
+        <tr><td class="l">Manuel</td><td class="num">6</td><td class="num">25,995</td><td class="num">7</td><td class="num" style="color:var(--vermilion)">3,714</td><td class="num">1.15%</td><td class="l">育成中</td></tr>
+        <tr><td class="l">integrator</td><td class="num">5</td><td class="num">15,768</td><td class="num">1</td><td class="num" style="color:var(--vermilion)">15,768</td><td class="num">1.18%</td><td class="l">育成中</td></tr>
+        <tr><td class="l">あんな</td><td class="num">5</td><td class="num">9,182</td><td class="num">32</td><td class="num">287</td><td class="num">0.66%</td><td class="l">育成中</td></tr>
+        <tr><td class="l">neru102</td><td class="num">3</td><td class="num">8,736</td><td class="num">280</td><td class="num">31</td><td class="num">0.94%</td><td class="l" style="color:var(--moss)">解禁済</td></tr>
+        <tr><td class="l">睡眠学</td><td class="num">5</td><td class="num">4,282</td><td class="num">1</td><td class="num" style="color:var(--vermilion)">4,282</td><td class="num">1.10%</td><td class="l">育成中</td></tr>
+        <tr><td class="l">take</td><td class="num">6</td><td class="num">3,414</td><td class="num">508</td><td class="num">7</td><td class="num">1.40%</td><td class="l" style="color:var(--moss)">解禁済</td></tr>
       </tbody>
-      <tfoot>
-        <tr><td class="l">接続済み</td><td class="num">9</td><td class="num">12,150</td><td class="num">&mdash;</td><td class="l">2箱</td><td class="l">18%</td></tr>
-        <tr><td class="l">断線</td><td class="num">21</td><td class="num" style="color:var(--vermilion)">55,227</td><td class="num">&mdash;</td><td class="l">4箱</td><td class="l" style="color:var(--vermilion)">82%</td></tr>
-      </tfoot>
     </table>
   </div>
+  <p class="lede">「再生/フォロワー」は1フォロワーあたり何再生かかっているかで、小さいほど効率が良い。take と neru102 の値が小さいのは中古アカウントの既存フォロワーを引き継いでいるためで、新運用での獲得力を示すものではない。</p>
 </section>
 
 <footer>
-  再生数は 2026-07-31 19:40 JST のスナップショット（新運用＝2026-07-28以降の投稿の累計、旧#pr投稿は除外）。短縮URLの着地先は実ブラウザで遷移して確認した実測値。投稿単位の採点と相関分析は <a href="scorecard.html">スコアカード</a> を参照。
+  再生数・フォロワー数は 2026-07-31 19:40 JST のスナップショット（新運用＝2026-07-28以降の投稿の累計、旧#pr投稿は除外）。短縮URLの着地先は実ブラウザで遷移して確認した実測値。投稿単位の採点と相関分析は <a href="scorecard.html">スコアカード</a> を参照。
 </footer>
 
 </div>
