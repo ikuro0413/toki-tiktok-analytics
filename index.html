@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>TOKI マーケティング導線マップ</title>
+<style>
+  :root{
+    --paper:#e9e6df; --card:#f3f1ec; --ink:#17181c; --ink-2:#4a4b52; --ink-3:#7b7a78;
+    --rule:#cdc8bd; --rule-2:#ded9d0;
+    --indigo:#24486b; --gold:#9a7530; --vermilion:#9c3b28; --moss:#4a6b45;
+    --bar:#24486b1a;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#0e1014; --card:#171a20; --ink:#e6e3db; --ink-2:#a9a69e; --ink-3:#77746e;
+      --rule:#2b2f38; --rule-2:#22262d;
+      --indigo:#7ba8cf; --gold:#d8b268; --vermilion:#d9604f; --moss:#8bb383;
+      --bar:#7ba8cf1a;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0e1014; --card:#171a20; --ink:#e6e3db; --ink-2:#a9a69e; --ink-3:#77746e;
+    --rule:#2b2f38; --rule-2:#22262d;
+    --indigo:#7ba8cf; --gold:#d8b268; --vermilion:#d9604f; --moss:#8bb383; --bar:#7ba8cf1a;
+  }
+  :root[data-theme="light"]{
+    --paper:#e9e6df; --card:#f3f1ec; --ink:#17181c; --ink-2:#4a4b52; --ink-3:#7b7a78;
+    --rule:#cdc8bd; --rule-2:#ded9d0;
+    --indigo:#24486b; --gold:#9a7530; --vermilion:#9c3b28; --moss:#4a6b45; --bar:#24486b1a;
+  }
+  *{box-sizing:border-box;}
+  html{background:var(--paper);}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Meiryo",system-ui,sans-serif;
+    font-size:15px; line-height:1.75; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1120px; margin:0 auto; padding:56px 24px 96px; display:flex; flex-direction:column; gap:52px;}
+  .num{font-variant-numeric:tabular-nums;}
+  header{display:flex; flex-direction:column; gap:16px; border-bottom:2px solid var(--ink); padding-bottom:24px;}
+  .eyebrow{font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-3); display:flex; gap:14px; flex-wrap:wrap;}
+  h1{font-family:"Yu Mincho","YuMincho","游明朝","Hiragino Mincho ProN",serif; font-size:clamp(28px,5vw,42px);
+     line-height:1.3; margin:0; font-weight:600; text-wrap:balance;}
+  .sub{color:var(--ink-2); max-width:66ch; margin:0;}
+  section{display:flex; flex-direction:column; gap:20px;}
+  h2{font-family:"Yu Mincho","YuMincho","游明朝","Hiragino Mincho ProN",serif; font-size:22px; margin:0;
+     font-weight:600; display:flex; align-items:baseline; gap:12px;}
+  h2::before{content:""; width:22px; height:2px; background:var(--gold); flex:none; transform:translateY(-6px);}
+  p{margin:0; max-width:70ch;} .lede{color:var(--ink-2);}
+
+  /* funnel */
+  .stage{display:flex; flex-direction:column; gap:12px;}
+  .stagehead{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;}
+  .stagehead .n{font-family:"Yu Mincho","游明朝",serif; font-size:13px; letter-spacing:.2em; color:var(--gold);}
+  .stagehead .t{font-weight:600; font-size:16px;}
+  .stagehead .m{font-size:12.5px; color:var(--ink-3);}
+  .boxes{display:grid; grid-template-columns:repeat(auto-fit,minmax(168px,1fr)); gap:10px;}
+  .box{
+    background:var(--card); border:1px solid var(--rule-2); border-left-width:3px;
+    padding:12px 14px; display:flex; flex-direction:column; gap:5px;
+  }
+  .box.live{border-left-color:var(--moss);}
+  .box.dead{border-left-color:var(--vermilion);}
+  .box .bn{font-weight:600; font-size:14px; display:flex; justify-content:space-between; gap:8px; align-items:baseline;}
+  .box .bv{font-size:19px; font-weight:600;}
+  .box .bm{font-size:11.5px; color:var(--ink-3); line-height:1.55;}
+  .box .tag{font-size:10.5px; letter-spacing:.05em; padding:0 6px; border:1px solid currentColor; border-radius:2px; white-space:nowrap;}
+  .tag.ok{color:var(--moss);} .tag.ng{color:var(--vermilion);}
+
+  .flow{display:flex; align-items:center; gap:12px; padding-left:2px; color:var(--ink-3); font-size:12.5px;}
+  .flow::before{content:""; width:1px; height:26px; background:var(--rule); margin-left:14px;}
+  .leak{color:var(--vermilion); font-weight:600;}
+
+  .node{
+    background:var(--card); border:1px solid var(--rule); padding:16px 18px;
+    display:flex; flex-direction:column; gap:6px; max-width:560px;
+  }
+  .node .nh{font-weight:600;}
+  .node .nu{font-family:ui-monospace,SFMono-Regular,Consolas,monospace; font-size:12px; color:var(--indigo); word-break:break-all;}
+  .node .nb{font-size:12.5px; color:var(--ink-2); line-height:1.65;}
+
+  .orphans{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:12px;}
+  .orphan{background:var(--card); border:1px dashed var(--rule); padding:14px 16px; display:flex; flex-direction:column; gap:6px;}
+  .orphan .oh{font-weight:600; font-size:14px;}
+  .orphan .ob{font-size:12.5px; color:var(--ink-2); line-height:1.65;}
+
+  .issues{display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule);}
+  .issue{background:var(--card); padding:17px 19px; display:flex; flex-direction:column; gap:7px;}
+  .issue .sev{font-size:11px; letter-spacing:.14em; font-weight:600;}
+  .sev.hi{color:var(--vermilion);} .sev.mid{color:var(--gold);} .sev.lo{color:var(--ink-3);}
+  .issue .ih{font-weight:600; font-size:14.5px; line-height:1.5;}
+  .issue .ib{font-size:12.5px; color:var(--ink-2); line-height:1.7;}
+
+  table{border-collapse:collapse; width:100%; font-size:13px;}
+  .tw{overflow-x:auto; border:1px solid var(--rule); background:var(--card);}
+  th,td{padding:8px 11px; text-align:right; border-bottom:1px solid var(--rule-2); white-space:nowrap;}
+  th{font-size:10.5px; letter-spacing:.08em; color:var(--ink-3); border-bottom:1px solid var(--rule);}
+  td.l,th.l{text-align:left;}
+  tfoot td{font-weight:600; border-bottom:none;}
+  a{color:var(--indigo);}
+  footer{font-size:12px; color:var(--ink-3); border-top:1px solid var(--rule); padding-top:18px; line-height:1.8;}
+  @media (max-width:640px){ .wrap{padding:34px 16px 64px; gap:40px;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow"><span>TOKI</span><span>マーケティング導線マップ</span><span>2026-07-31 時点</span></div>
+  <h1>TikTok 6箱から睡眠力診断までの<br>導線と、その断線箇所</h1>
+  <p class="sub">投稿から診断到達までの経路を実測でたどった図。7/31時点で総再生67,377のうち<strong>55,227（82%）が遷移先を持たないまま消えている</strong>。断線は制作物ではなくプロフィール設定側にある。</p>
+</header>
+
+<section>
+  <h2>導線の全体像</h2>
+
+  <div class="stage">
+    <div class="stagehead">
+      <span class="n">STAGE 1</span><span class="t">TikTok 6箱 — 到達</span>
+      <span class="m">新運用 2026-07-28以降の累計再生</span>
+    </div>
+    <div class="boxes">
+      <div class="box dead">
+        <div class="bn"><span>Manuel</span><span class="tag ng">リンクなし</span></div>
+        <div class="bv num">25,995</div>
+        <div class="bm">6本 / bio「tiktokやめたい」<br>最大の到達量を持つ箱</div>
+      </div>
+      <div class="box dead">
+        <div class="bn"><span>integrator</span><span class="tag ng">リンクなし</span></div>
+        <div class="bv num">15,768</div>
+        <div class="bm">5本 / bio「tiktok見るのやめよ」<br>単発13,700の当たりを保有</div>
+      </div>
+      <div class="box dead">
+        <div class="bn"><span>あんな</span><span class="tag ng">リンクなし</span></div>
+        <div class="bv num">9,182</div>
+        <div class="bm">5本 / bio 未記入<br>フォロワー32</div>
+      </div>
+      <div class="box dead">
+        <div class="bn"><span>睡眠学</span><span class="tag ng">リンクなし</span></div>
+        <div class="bv num">4,282</div>
+        <div class="bm">5本 / bio 未記入<br>保存率0.180%と質は高い</div>
+      </div>
+      <div class="box live">
+        <div class="bn"><span>neru102</span><span class="tag ok">リンクあり</span></div>
+        <div class="bv num">8,736</div>
+        <div class="bm">3本 / bio「行動分析をする診断」<br>x.gd/qNIVW・フォロワー280</div>
+      </div>
+      <div class="box live">
+        <div class="bn"><span>take</span><span class="tag ok">リンクあり</span></div>
+        <div class="bv num">3,414</div>
+        <div class="bm">6本 / bio「睡眠診断作りました」<br>x.gd/Gqyho・フォロワー508</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow"><span>到達した67,377のうち、次のステージへ進める資格があるのは <strong>12,150（18%）</strong>だけ。<span class="leak">55,227が断線</span></span></div>
+
+  <div class="stage">
+    <div class="stagehead"><span class="n">STAGE 2</span><span class="t">プロフィールの短縮リンク</span><span class="m">2箱のみ</span></div>
+    <div class="boxes" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr));">
+      <div class="box live">
+        <div class="bn"><span>x.gd/Gqyho</span></div>
+        <div class="bm">take の bio。文言は「勝手に睡眠診断作りました」</div>
+      </div>
+      <div class="box live">
+        <div class="bn"><span>x.gd/qNIVW</span></div>
+        <div class="bm">neru102 の bio。文言は「SNS断ちたい、という思いで行動分析をする診断」</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow"><span>短縮URLは2本あるが、<strong>実測すると遷移先は同一</strong></span></div>
+
+  <div class="stage">
+    <div class="stagehead"><span class="n">STAGE 3</span><span class="t">診断ページ（着地）</span></div>
+    <div class="node">
+      <div class="nh">現代を生きる&quot;睡眠力&quot;診断</div>
+      <div class="nu">https://rentalloungeomiya.com/</div>
+      <div class="nb">x.gd/Gqyho と x.gd/qNIVW の両方がここに着地する。下層に privacy.html / legal.html。回答は GAS のレポートサーバーへ送られ、回答ログと設問別回答のシートに蓄積される。</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>導線に接続されていない資産</h2>
+  <p class="lede">作られているのに、どの箱からも到達できない状態のもの。</p>
+  <div class="orphans">
+    <div class="orphan">
+      <div class="oh">夜の主権診断</div>
+      <div class="ob"><code>ikuro0413.github.io/night-sovereignty-check/</code><br>GitHub Pages で公開済み。行動経済学ベースの別診断だが、どの bio からもリンクされていない。neru102 の bio 文言（行動分析）はこちらの説明に近いのに、実際の遷移先は睡眠力診断になっている。</div>
+    </div>
+    <div class="orphan">
+      <div class="oh">DetoxNews</div>
+      <div class="ob">集客メディア。GitHub Pages のテスト版が noindex で稼働中、本番は Xサーバー＋独自ドメイン予定。診断からの送客先にも、診断への流入元にもなっていない。</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>断線箇所と損失</h2>
+  <div class="issues">
+    <div class="issue">
+      <div class="sev hi">最優先 &mdash; 損失55,227再生</div>
+      <div class="ih">4箱の bio にリンクが無い</div>
+      <div class="ib">Manuel・integrator・あんな・睡眠学。到達量の上位2箱がどちらもここに入っているため、損失は量的に最大。作業は bio 編集4回で完了し、制作物の変更は要らない。</div>
+    </div>
+    <div class="issue">
+      <div class="sev mid">中 &mdash; 計測不能</div>
+      <div class="ih">2本の短縮URLが同じページに着地する</div>
+      <div class="ib">bio の文言は「睡眠診断」と「行動分析診断」で違うのに、実際は同じ診断に飛ぶ。短縮URLが分かれているので流入元の切り分けは可能だが、期待と中身がずれている状態。文言を実物に合わせるか、夜の主権診断を neru102 側の着地に割り当てるかの二択。</div>
+    </div>
+    <div class="issue">
+      <div class="sev mid">中 &mdash; 資産の遊休</div>
+      <div class="ih">夜の主権診断が導線から外れている</div>
+      <div class="ib">公開済みで動くのに流入がゼロ。箱ごとに診断を出し分ければ、どちらの診断が回答完了まで到達するかを比較できる。</div>
+    </div>
+    <div class="issue">
+      <div class="sev lo">低 &mdash; 将来の設計</div>
+      <div class="ih">DetoxNews が funnel に入っていない</div>
+      <div class="ib">現状は独立したメディア。診断の結果ページから記事へ送る、あるいは記事から診断へ送る動線を作らないと、投稿→診断の一本道のままになる。</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>箱別の損失内訳</h2>
+  <div class="tw">
+    <table>
+      <thead><tr><th class="l">箱</th><th>本数</th><th>累計再生</th><th>保存率</th><th class="l">bio リンク</th><th class="l">状態</th></tr></thead>
+      <tbody>
+        <tr><td class="l">Manuel</td><td class="num">6</td><td class="num">25,995</td><td class="num">0.177%</td><td class="l">なし</td><td class="l" style="color:var(--vermilion)">断線</td></tr>
+        <tr><td class="l">integrator</td><td class="num">5</td><td class="num">15,768</td><td class="num">0.065%</td><td class="l">なし</td><td class="l" style="color:var(--vermilion)">断線</td></tr>
+        <tr><td class="l">あんな</td><td class="num">5</td><td class="num">9,182</td><td class="num">0.116%</td><td class="l">なし</td><td class="l" style="color:var(--vermilion)">断線</td></tr>
+        <tr><td class="l">neru102</td><td class="num">3</td><td class="num">8,736</td><td class="num">0.095%</td><td class="l">x.gd/qNIVW</td><td class="l" style="color:var(--moss)">接続</td></tr>
+        <tr><td class="l">睡眠学</td><td class="num">5</td><td class="num">4,282</td><td class="num">0.180%</td><td class="l">なし</td><td class="l" style="color:var(--vermilion)">断線</td></tr>
+        <tr><td class="l">take</td><td class="num">6</td><td class="num">3,414</td><td class="num">0.086%</td><td class="l">x.gd/Gqyho</td><td class="l" style="color:var(--moss)">接続</td></tr>
+      </tbody>
+      <tfoot>
+        <tr><td class="l">接続済み</td><td class="num">9</td><td class="num">12,150</td><td class="num">&mdash;</td><td class="l">2箱</td><td class="l">18%</td></tr>
+        <tr><td class="l">断線</td><td class="num">21</td><td class="num" style="color:var(--vermilion)">55,227</td><td class="num">&mdash;</td><td class="l">4箱</td><td class="l" style="color:var(--vermilion)">82%</td></tr>
+      </tfoot>
+    </table>
+  </div>
+</section>
+
+<footer>
+  再生数は 2026-07-31 19:40 JST のスナップショット（新運用＝2026-07-28以降の投稿の累計、旧#pr投稿は除外）。短縮URLの着地先は実ブラウザで遷移して確認した実測値。投稿単位の採点と相関分析は <a href="scorecard.html">スコアカード</a> を参照。
+</footer>
+
+</div>
+</body>
+</html>
